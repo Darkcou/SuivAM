@@ -3,33 +3,33 @@ package com.example.benjamin.suivam;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText Name;
-    private EditText Password;
-    private TextView Error;
-    private Button Check;
+    private TextView interdition;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        interdition=(TextView)findViewById(R.id.dtVisite);
+        logo=(ImageView) findViewById(R.id.imgMatrix);
+        validate("1","2",interdition,logo);
+            }
 
-        Name=(EditText)findViewById(R.id.edtNom);
-        Password=(EditText)findViewById(R.id.edtPassword);
-        Error=(TextView)findViewById(R.id.txtErreur);
-        Check=(Button)findViewById(R.id.btnValider);
-
-    }
-
-    private void validate(String userName,String userPassword){
+    private void validate(String userName,String userPassword, TextView interdition,ImageView logo){
 
         if(userName=="test" && userPassword=="1234"){
             Intent intent= new Intent(MainActivity.this, SecondActivity.class);
+        }
+        else {
+            logo.setVisibility(View.INVISIBLE);
+            interdition.setVisibility(View.VISIBLE);
         }
     }
 }
