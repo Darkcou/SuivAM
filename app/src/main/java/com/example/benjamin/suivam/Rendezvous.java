@@ -6,8 +6,8 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.util.Date;
 import java.util.List;
 
-@DatabaseTable()
-public class Renezvous {
+@DatabaseTable
+public class Rendezvous {
     private Visiteur visiteur;
     private List<Medecien> medeciens;
 
@@ -17,7 +17,7 @@ public class Renezvous {
     private int heureDepart;
     private boolean rendezVous;
 
-    public Renezvous( Date dateVisite, int heureArriver, int heureDebut, int heureDepart, boolean rendezVous) {
+    public Rendezvous(Date dateVisite, int heureArriver, int heureDebut, int heureDepart, boolean rendezVous) {
         this.dateVisite = dateVisite;
         this.heureArriver = heureArriver;
         this.heureDebut = heureDebut;

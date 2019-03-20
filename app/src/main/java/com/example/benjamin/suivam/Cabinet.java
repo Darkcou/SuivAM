@@ -2,7 +2,7 @@ package com.example.benjamin.suivam;
 
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable()
+@DatabaseTable
 public class Cabinet {
     private int idCabinet;
     private String nom;

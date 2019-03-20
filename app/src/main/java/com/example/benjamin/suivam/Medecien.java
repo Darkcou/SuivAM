@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.List;
 
-@DatabaseTable()
+@DatabaseTable
 public class Medecien {
     private int idMedecien;
     private String nom;
