@@ -8,13 +8,20 @@ import java.util.List;
 
 @DatabaseTable
 public class Rendezvous {
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private Visiteur visiteur;
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
     private List<Medecien> medeciens;
 
+    @DatabaseField
     private Date dateVisite;
+    @DatabaseField
     private int heureArriver;
+    @DatabaseField
     private int heureDebut;
+    @DatabaseField
     private int heureDepart;
+    @DatabaseField
     private boolean rendezVous;
 
     public Rendezvous(Date dateVisite, int heureArriver, int heureDebut, int heureDepart, boolean rendezVous) {

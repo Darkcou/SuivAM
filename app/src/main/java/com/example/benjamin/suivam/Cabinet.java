@@ -1,11 +1,15 @@
 package com.example.benjamin.suivam;
 
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Cabinet {
+    @DatabaseField(generatedId = true)
     private int idCabinet;
+    @DatabaseField
     private String nom;
+    @DatabaseField
     private String adresse;
 
     public Cabinet(String nom, String adresse) {

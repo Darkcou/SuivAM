@@ -3,19 +3,21 @@ package com.example.benjamin.suivam;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.List;
-
 @DatabaseTable
 public class Medecien {
+    @DatabaseField(generatedId = true)
     private int idMedecien;
+    @DatabaseField
     private String nom;
+    @DatabaseField
     private String prenom;
-    @DatabaseField(foreign = true)
-    private List<Cabinet> cabinets ;
+    @DatabaseField(foreign = true, foreignAutoCreate = true)
+    private Cabinet cabinet;
 
-    public Medecien(String nom, String prenom) {
+    public Medecien(String nom, String prenom, Cabinet cabinet) {
         this.nom = nom;
         this.prenom = prenom;
+        this.cabinet = cabinet;
     }
 
     public int getIdMedecien() {
@@ -30,8 +32,8 @@ public class Medecien {
         return prenom;
     }
 
-    public List<Cabinet> getCabinets() {
-        return cabinets;
+    public Cabinet getCabinet() {
+        return cabinet;
     }
 
     public void setIdMedecien(int idMedecien) {
@@ -46,8 +48,8 @@ public class Medecien {
         this.prenom = prenom;
     }
 
-    public void setCabinets(List<Cabinet> cabinets) {
-        this.cabinets = cabinets;
+    public void setCabinet(Cabinet cabinet) {
+        this.cabinet = cabinet;
     }
 
     @Override
@@ -56,7 +58,7 @@ public class Medecien {
                 "idMedecien=" + idMedecien +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", cabinets=" + cabinets +
+                ", cabinet=" + cabinet +
                 '}';
     }
 }

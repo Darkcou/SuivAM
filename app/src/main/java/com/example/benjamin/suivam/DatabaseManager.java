@@ -34,33 +34,44 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-        Log.i("DataBase", "onCreate");
+        try{
+            TableUtils.dropTable(connectionSource, Visiteur.class, true);
+            TableUtils.dropTable(connectionSource, Rendezvous.class, true);
+            TableUtils.dropTable(connectionSource, Medecien.class, true);
+            TableUtils.dropTable(connectionSource, Cabinet.class, true);
+            Log.i("DataBase", "onUpgrade");
+        }
+        catch (Exception exception){
+            Log.e("Database","ne peu pas mise à jour", exception);
+        }
     }
 
     public List<Medecien> selectMedecien(){
         try{
-            Dao<Rendezvous,Integer> dao = getDao(Medecien.class);
-            dao.que;
-            return ;
+            Dao<Medecien,Integer> dao = getDao(Medecien.class);
+            List<Medecien> medeciens = dao.queryForAll();
+            return  medeciens;
         }catch (Exception exception){
             Log.e("Database","ne peu pas selectionner de medeciens dans database", exception);
+            return null;
         }
     }
 
     public List<Cabinet> selectCabinet(){
         try{
-            Dao<Rendezvous,Integer> dao = getDao(Cabinet.class);
-            dao.que;
-            return ;
+            Dao<Cabinet,Integer> dao = getDao(Cabinet.class);
+            List<Cabinet> cabinets = dao.queryForAll();
+            return cabinets;
         }catch (Exception exception){
             Log.e("Database","ne peu pas selectionner de cabinet dans database", exception);
+            return null;
         }
     }
 
     public void selectRendezvous(Rendezvous rendezvous){
         try{
             Dao<Rendezvous,Integer> dao = getDao(Rendezvous.class);
-            dao.que;
+            dao.queryForMatching(rendezvous);
         }catch (Exception exception){
             Log.e("Database","ne peu pas selectionner de rendezvous dans database", exception);
         }
